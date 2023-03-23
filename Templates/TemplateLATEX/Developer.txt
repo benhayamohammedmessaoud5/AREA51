@@ -1,0 +1,57 @@
+@startuml
+actor Developer as d
+left to right direction
+package Developer{
+usecase "Gestion Profile" as g
+
+usecase "Participate to A Learning Module" as p1
+usecase "Participate to A Learning Path" as p2
+usecase "Participate to A Challenge" as p3
+usecase "Particiapte to An Interview" as p4
+usecase "View Job Offer List" as job
+usecase "Apply For A job" as apply
+
+usecase "View List of Challenges" as s
+usecase "View Schedule" as s2
+
+usecase "View Results" as s4
+usecase "Set A reminder" as reminder
+usecase "Set An Event Reminder" as event
+usecase "Set An Interview Reminder" as inter
+usecase "Search for a Job" as search
+
+usecase "Delete" as delete
+usecase "Update" as u
+usecase "Create" as c
+
+ 
+usecase "Hang Up" as h
+
+
+}
+d-->g
+d-->p2
+d-->p4
+d-->s
+d-->s2
+d-->reminder
+d-->search
+d-->job
+
+
+
+g <|-- c
+g <|-- u 
+g <|-- delete
+
+reminder <|-- event
+reminder <|-- inter
+
+p2 ..> p1 : <<includes>>
+
+p4 <.. h : <<extends>>
+p4 <.. s4 : <<extends>>
+p3 <.. s4 : <<extends>>
+s <.. p3 : <<extends>>
+job <.. apply : <<extends>>
+@enduml

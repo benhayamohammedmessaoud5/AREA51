@@ -1,0 +1,7 @@
+- Après l'installation du Miktex et WinEdt, ouvrez le fichier template.tex.
+- Insérer chaque partie dans l'emplacement qui lui est réservé.
+- Compiler le texte: Accessoires -> Compile.
+- Le résultat de la compilation c'est votre fichier PDF.
+
+
+					BON COURAGE

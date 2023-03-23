@@ -1,0 +1,41 @@
+\babel@toc {french}{}\relax 
+\contentsline {chapter}{\numberline {}Introduction G\'en\'erale}{1}{}%
+\contentsline {subsubsection}{Contexte de Projet}{1}{}%
+\contentsline {subsubsection}{Probl\'ematiques}{1}{}%
+\contentsline {subsubsection}{Objectives:}{2}{}%
+\contentsline {chapter}{\numberline {1}Analyse des Besoins}{3}{}%
+\contentsline {section}{\numberline {1.1}Introduction}{3}{}%
+\contentsline {section}{\numberline {1.2}Analyse des besoins}{3}{}%
+\contentsline {subsection}{\numberline {1.2.1}Etude du march\'e}{3}{}%
+\contentsline {subsubsection}{Acteurs:}{4}{}%
+\contentsline {subsubsection}{Caract\'eristiques Principales:}{4}{}%
+\contentsline {subsubsection}{Description des cas d'utilisation:}{4}{}%
+\contentsline {subsubsection}{Technologies Utilis\'ees:}{5}{}%
+\contentsline {subsubsection}{Acteurs:}{5}{}%
+\contentsline {subsubsection}{Caract\'eristiques Principales:}{5}{}%
+\contentsline {subsubsection}{Technologies Utilis\'ees::}{5}{}%
+\contentsline {subsubsection}{Description des cas d'utilisation:}{6}{}%
+\contentsline {subsubsection}{Acteurs:}{6}{}%
+\contentsline {subsubsection}{Caract\'eristiques Principales:}{6}{}%
+\contentsline {subsubsection}{Technologies Utilis\'ees::}{7}{}%
+\contentsline {subsubsection}{Description des cas d'utilisation:}{7}{}%
+\contentsline {subsection}{\numberline {1.2.2}Description du projet:}{7}{}%
+\contentsline {subsection}{\numberline {1.2.3}Expression des besoins : }{8}{}%
+\contentsline {subsubsection}{Identification des Actors}{8}{}%
+\contentsline {subsubsection}{Identification des Besions}{9}{}%
+\contentsline {subsubsection}{Les besoins fonctionnels:}{9}{}%
+\contentsline {subsubsection}{Besoins non fonctionnels:}{11}{}%
+\contentsline {section}{\numberline {1.3}Specification des besions}{11}{}%
+\contentsline {subsection}{\numberline {1.3.1}Description des cas d'utilisation:}{11}{}%
+\contentsline {section}{\numberline {1.4}Conclusion}{34}{}%
+\contentsline {chapter}{\numberline {2}Titre Chapitre 2}{35}{}%
+\contentsline {section}{\numberline {2.1}Introduction}{35}{}%
+\contentsline {section}{\numberline {2.2}Titre 1}{35}{}%
+\contentsline {section}{\numberline {2.3}Titre 2}{35}{}%
+\contentsline {chapter}{\numberline {3}Titre Chapitre 3}{36}{}%
+\contentsline {section}{\numberline {3.1}Introduction}{36}{}%
+\contentsline {section}{\numberline {3.2}Titre 1}{36}{}%
+\contentsline {section}{\numberline {3.3}Titre 2}{36}{}%
+\contentsline {chapter}{\numberline {}Perspectives}{37}{}%
+\contentsline {chapter}{\numberline {}Bibliographie}{38}{}%
+\contentsline {chapter}{\numberline {}Annexe}{39}{}%

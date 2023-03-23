@@ -1,0 +1,1247 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{t1enc}
+\usepackage[latin1]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[all]{xy}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{subfigure}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{wrapfig}
+\usepackage{longtable}
+\usepackage{tabularray}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+%On ajoute [chapter] pour inclure le num\'ero de chapitre dans la num\'erotation
+\newtheorem{theorem}{Th\'eor\`eme}[chapter]
+\newtheorem{algorithm}[theorem]{Algorithme}
+\newtheorem{axiom}[theorem]{Axiome}
+\newtheorem{case}[theorem]{Cas}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}{Corollaire}[chapter]
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{D\'efinition}[chapter]
+\newtheorem{example}{Exemple}[chapter]
+\newtheorem{exercise}{Exercice}[chapter]
+\newtheorem{lemma}{Lemme}[chapter]
+\newtheorem{notation}{Notation}[chapter]
+\newtheorem{problem}{Probl\`eme}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{remark}{Remarque}[chapter]
+\newtheorem{solution}{Solution}[chapter]
+\newtheorem{summary}{Sommaire}
+
+\pagestyle{fancy} %insertion de l'ent\^ete de page. Par d\'efaut c'est empty
+\renewcommand{\headrulewidth}{1pt} %La ligne horizentale dans l'ent\^ete de page
+\fancyhead[L]{\thepage} %num\'ero de page va apparaitre \`a droite
+\fancyhead[R]{\leftmark} %avec article, imprime le nom de la section courante
+%avec books ou report, imprime le nom du chapitre courant
+\usepackage[T1]{fontenc}        % accents dans le DVI
+\usepackage{url}                % citer des adresses \'electroniques et des URL
+\frenchspacing % Marge gauche, haute, droite, basse; espace entre la marge et le texte \`a
+% gauche, en  haut, \`a droite, en bas
+\setlength{\parskip}{1ex}%espace entre paragraphes
+% Je red\'efinis le comportement des guillemets
+%#############################################
+
+% Pour laisser de l'espace entre les lignes du tableau
+\newcommand\espace{\vrule height 20pt width 0pt}
+
+% Pour mes grands titres
+\newcommand{\titre}[1]{%
+	\begin{center}
+		\bigskip
+		\rule{\textwidth}{1pt}
+		\par\vspace{0.1cm}
+		\textbf{\large #1}
+		\par\rule{\textwidth}{1pt}
+	\end{center}
+	\bigskip
+}
+
+\newcommand*{\titleGP}{\begingroup % Cr\'eer la commande avant de l'ins\'erer dans le document
+	\centering % Centrer tout le texte
+	\vspace*{\baselineskip} % E^space en haut de la page
+	
+	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % La 1\`ere ligne horizentale en haut
+	\rule{\textwidth}{0.4pt}\\[\baselineskip] % La 2\`eme ligne horizentale en haut
+	
+	{\LARGE Toward Building a Secure\\ Competitive Learning Platform\\
+		for Computer Science Technical Challenges}\\[0.2\baselineskip] % Titre du m\'emoire
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % La 1\`ere ligne horizentale en bas
+	\rule{\textwidth}{1.6pt}\\[\baselineskip] % La 2\`eme ligne horizentale en bas
+	\endgroup}
+
+\begin{document} %D\'ebut du document
+	
+	\begin{titlepage} %Insertion de la page de garde
+		\begin{center}
+			
+			République Algérienne Démocratique et Populaire\\
+			Ministère de l'Enseignement Supérieur et de la Recherche Scientifique\\
+			Université Constantine 2 - Abdelhamid Mehri -\\
+			.\\
+			Faculté des Nouvelles Technologies de l'Informatique et de la Communication\\
+			Département des Technologies des Logiciels et Systèmes d'Information
+			%Logo de l'universitÃ©
+			\begin{figure}[!h]
+				
+				\subfigure{\includegraphics[width=0.15\linewidth]{ntic}}
+				\hfill
+				\subfigure{\includegraphics[width=0.25\linewidth]{logo}}
+				\hfill
+				\subfigure{\includegraphics[width=0.15\linewidth]{tlsi}}
+				
+			\end{figure}
+			
+			\vskip 0.5cm { \bf
+				Projet de fin d'études pour l'obtention du diplome de Licence en Informatique}
+			\vskip 0.3cm
+			Option :  GL
+			
+		\end{center}
+		
+		\begin{flushleft}
+			{ N d'ordre: ...............}
+		\end{flushleft}
+		
+		\titleGP
+		%Noms des \'etudiants
+		\vskip 0.5cm
+		\begin{tabular}{ll}
+			\hbox{Préparée par}:\hfill
+			&\mbox{Mezrag Abdelouadoud Yasser}\\
+			&\mbox{Benhaya Mohammed Messaoud }\\
+			&\mbox{Ghrib Aya}\\
+			{ } &     \\
+			%Nom de l'encadreur
+			{Dirigée Par:} & Dr. Marir. Naila \\
+		\end{tabular}
+		\vskip 1cm
+		\begin{flushright}
+			{ Session 2022/2023}
+		\end{flushright}
+	\end{titlepage}
+	
+	\cleardoublepage
+	\thispagestyle{empty}%Pour ne pas avoir l'ent\^ete et le num\'ero de page
+	\begin{flushright} %Ca va \^etre \'ecrit sur la droite de la page
+		\large\em\null\vfill
+		\ Vos d\'edicaces, \\
+		\ Vos d\'edicaces.\vfill\vfill
+	\end{flushright}
+	\cleardoublepage
+	%A partir de cette page, la num\'erotation est romaine: i, ii, iii .....
+	%Chapter * pour que le chapitre ne soit pas num\'erot\'e
+	\pagenumbering{roman}\setcounter{page}{1}
+	\chapter*{Remerciements}
+	
+	\chapter*{R\'esum\'e}
+	
+	{\bf Mots cl\'es:} Mot1, Mot2, ....
+	
+	\chapter*{R\'esum\'e en arabe}
+	
+	{\bf Mots cl\'es:} Mot1, Mot2, ....
+	
+	%Insertion de la table de mati\`eres
+	\tableofcontents
+	%Insertion de la liste des figures
+	\listoffigures
+	%Insertion de la liste des tables
+	\listoftables
+	
+	%A partir de cette page, la num\'erotation est arabe: 1, 2, 3 .....
+	\newpage
+	\pagenumbering{arabic}\setcounter{page}{1}
+	
+	\chapter*{General Introduction}
+	\addcontentsline{toc}{chapter}{\protect\numberline{}Introduction G\'en\'erale} %Insertion manuelle de l'introduction g\'en\'erale dans la table de mati\`eres car cette derni\`ere est non num\'erot\'ee (chapter*)
+	
+\subsubsection{Contexte de Projet}
+En tant qu'étudiants ou éducateurs, nous avons remarqué que les plateformes d'apprentissage en ligne traditionnelles semblent souvent impersonnelles et manquent d'engagement. nous pensons qu'il existe une lacune sur le marché pour une plate-forme d'apprentissage en ligne qui soit non seulement pratique et accessible, mais aussi amusante, interactive et sociale.
+
+nous avons vu le succès de la gamification dans d'autres domaines technologiques, tels que les applications de fitness et les applications d'apprentissage des langues, et pensons que cette approche pourrait également être appliquée à l'apprentissage en ligne. nous avons également été informés de la demande croissante d'éducation en ligne en raison de la pandémie de COVID-19, qui a rendu plus difficile l'apprentissage traditionnel en classe.
+
+De plus, nous avons observé que les étudiants sont souvent motivés par la compétition et la reconnaissance, et pensons que l'intégration d'un élément compétitif dans votre plateforme d'apprentissage en ligne pourrait augmenter l'engagement et la réussite des étudiants.
+
+Avec tous ces facteurs à l'esprit, il y a eu une motivation pour créer une plate-forme d'apprentissage en ligne compétitive qui offre des cours et des ressources de haute qualité, et offre une expérience d'apprentissage amusante, engageante et sociale pour les étudiants. l'objectif est d'aider les étudiants à atteindre leurs objectifs académiques et à libérer leur plein potentiel grâce à la puissance de la technologie
+\subsubsection{Problématiques}
+Plusieurs motivation et problèmes qui ont motivé le développement de cette application :
+\begin{enumerate}
+	\item {Le problème de l'ennui dans l'éducation en Algérie.
+	}
+	\item {L'incapacité des universités a fournir le matériel dans les salles tp pour conduire des compétitions. }
+	\item {Quarantaine a domicile en raison de la pandémie de covid   .
+	}
+	\item {Commet pouvons-nous crée une plateforme d'apprentissage en ligne qui a la fois enrichit l'expérience d'apprentissage de l'apprenant de manière compétitive.
+	}
+	\item {Comment faciliter le processus de recherche d'emploi et d'embauche pour les développeurs et les recruteurs d'entreprise. }
+	\item {Comment accompagner les développeurs et développer leurs compétences en Algérie. }
+	\item {Commet rendre l'apprentissage de manière ludique loin des voies habituelles. }
+	\item {Comment assurer en toute sécurité l?intégrité des compétitions entre développeurs et maintenir un environnement de compétition propre et sportif qui encourage la pratique et développe l'expérience d'apprentissage des développeurs. }
+\end{enumerate}
+\subsubsection{Objectives:}
+\begin{itemize}
+	\item{développer une plate-forme d'apprentissage engageante et intéressante qui répond à la durée d'attention de l'apprenant et réduit l'ennui du processus éducatif}
+	\item{développer un système de compétition en ligne qui peut engager plusieurs participants en même temps}
+	\item{offrir une expérience d'apprentissage enrichissante aux étudiants et aux développeurs}
+	\item{développer un environnement compétitif convivial qui encourage l'apprentissage et la réussite des cours pour les développeurs et les apprenants}
+	\item{faciliter le processus de recherche d'emploi pour les développeurs talentueux et le recrutement d'employés hautement techniques pour les propriétaires d'entreprise}
+	\item{
+		élever le niveau de formation en informatique en algérie et les capacités techniques des développeurs}
+	\item{
+		développer un système ludique basé sur des récompenses et des badges pour garder les apprenants motivés à améliorer leurs compétences
+	}
+	\item{
+		créer un environnement de compétition sécurisé et sportif où l'intégrité des scores et des classements est préservée
+	}
+\end{itemize}
+	%pour ins\'erer un nouveau paragraphe, on fait deux sauts de ligne
+	
+	Voici le texte qui va composer le deuxi\`eme paragraphe. Pour plus d'informations voir \cite{cle}.%\cite{cle} pour faire apparaitre la bibliographie avec son label
+	
+	\chapter{Analyse des Besoins}
+	%Insertion de l'ent\^ete de page avec num\'ero de page et titre du chapitre
+	\thispagestyle{fancy}
+	
+	\section{Introduction}
+	Le processus unifié est une méthodologie de développement de logiciels qui suit un cycle de vie itératif et incrémental. La phase d'analyse des besoins est cruciale dans ce processus, car elle établit les fondements de la solution logicielle.
+	
+	Nous commencerons par discuter de l'étude de marché, qui vise à comprendre l'environnement dans lequel la solution logicielle sera utilisée. Nous passerons ensuite à la description du projet, qui détaille les objectifs du projet, les contraintes et les risques. Nous verrons également comment l'identification des acteurs est essentielle pour comprendre les différentes parties prenantes impliquées dans le projet. Nous examinerons ensuite les diagrammes statiques et les besoins fonctionnels et non fonctionnels. Nous expliquerons également comment les diagrammes de cas d'utilisation sont utilisés pour spécifier les besoins et les fiches descriptives pour décrire les cas d'utilisation en détail. Enfin, nous verrons comment les séquences de système sont utilisées pour modéliser le flux des cas d'utilisation et comment les maquettes IHM sont utilisées pour visualiser l'interface utilisateur.
+	
+	
+	\section{Analyse des besoins}
+	
+	
+	\subsection{Etude du marché}
+	Dans cette section, nous allons examiner trois systèmes existants qui concernent notre domaine et qui ont connu du succès en raison des fonctionnalités qu'ils ont implémentées, des idées qu'ils ont proposées et de la technologie qu'ils ont utilisée\\
+	\begin{figure}[!h]
+		
+		\subfigure{\includegraphics[width=0.15\linewidth]{hackerrank}}
+		\hfill
+		\subfigure{\includegraphics[width=0.15\linewidth]{tryhackme}}
+		\hfill
+		\subfigure{\includegraphics[width=0.15\linewidth]{tianchi}}
+		
+	\end{figure}
+	\begin{enumerate}
+		\item{\textbf{HackerRank:}}L'idée principale de HackerRank est de fournir une plate-forme où les individus peuvent pratiquer et améliorer leurs compétences en codage, et où les entreprises peuvent identifier et embaucher les meilleurs talents techniques.
+		\subsubsection{Acteurs:}
+		\begin{itemize}
+			\item{Étudiants : il s'agit des utilisateurs qui utilisent la plate-forme pour apprendre et mettre en pratique les compétences de codage par le biais de défis interactifs, de concours et de didacticiels.}
+			
+			\item{Recruteurs : ce sont les utilisateurs qui utilisent la plateforme pour évaluer et sélectionner les candidats à des postes techniques, tels que le génie logiciel, la science des données et la cybersécurité.}
+			
+			\item{Employeurs : Ce sont les utilisateurs qui utilisent la plateforme pour se connecter et embaucher les meilleurs talents de l'industrie technologique, en tirant parti des outils de recherche et d'évaluation des candidats basés sur les données de HackerRank.}
+			
+			\item{Éducateurs : ce sont les utilisateurs qui utilisent la plate-forme pour enseigner les concepts de codage et d'informatique dans une salle de classe ou en ligne, en tirant parti du contenu et des outils organisés par HackerRank pour suivre les progrès des élèves.}
+			
+			\item{Créateurs de contenu : ce sont les utilisateurs qui contribuent à la plate-forme en créant de nouveaux défis de codage, des didacticiels et d'autres contenus éducatifs pour la communauté.}
+		\end{itemize}
+		\subsubsection{Caractéristiques Principales:}
+		\begin{itemize}
+			\item{Défis de codage : HackerRank propose un large éventail de défis et de concours de codage dans divers domaines}
+			
+			\item{Évaluations basées sur les compétences : HackerRank fournit des évaluations basées sur les compétences qui peuvent être utilisées par les entreprises pour évaluer les compétences en codage des candidats à un emploi}
+			
+			
+			
+			\item{Discussions et éditoriaux : après avoir résolu un défi de codage, les utilisateurs peuvent discuter de leurs solutions avec d'autres utilisateurs et consulter des éditoriaux qui expliquent la solution en détail.}
+			
+			\item{CodePair : HackerRank fournit une plateforme d'entretien vidéo appelée CodePair qui permet aux entreprises de mener des entretiens techniques à distance.}
+			
+			\item{Certifications : HackerRank propose des examens de certification qui testent les compétences de codage des utilisateurs dans divers domaines. }
+			
+			\item{Gamification : HackerRank utilise une approche gamifié de l'apprentissage et de la résolution de problèmes.}
+		\end{itemize}
+		\subsubsection{Description des cas d'utilisation:}
+		\begin{itemize}
+			\item{\textbf{Résoudre un défi de codage sur HackerRank}}
+			\begin{enumerate}
+				\item{L'acteur se connecte à son compte HackerRank.}
+				\item{L'acteur navigue vers la section "Pratique" de la plateforme.}
+				\item{L'acteur sélectionne un défi de codage qu'il souhaite résoudre.}
+				\item{L'acteur lit l'énoncé du problème et comprend les exigences du défi.}
+				\item{L'acteur écrit du code pour résoudre le défi en utilisant son langage de programmation préféré.}
+				\item{L'acteur soumet son code pour évaluation.}
+				\item{La plate-forme exécute le code sur un ensemble de cas de test pour déterminer son exactitude et son efficacité.}
+				\item{La plate-forme fournit un retour d'information à l'acteur sur l'exactitude et l'efficacité de son code.}
+				\item{Si le code de l'acteur est correct, il gagne des points et passe au défi suivant.}
+				\item{Si le code de l'acteur est incorrect, il peut revoir les commentaires et réviser son code jusqu'à ce qu'il soit correct.}
+				
+			\end{enumerate}
+		\end{itemize}
+			\subsubsection{Technologies Utilisées:}
+			\begin{itemize}
+				\item{Front-end web development: HTML, CSS, JavaScript, React.js}
+				
+				\item{Back-end web development: Node.js, Ruby on Rails, MySQL}
+				
+				\item{Cloud infrastructure: Amazon Web Services (AWS)}
+				
+				\item{Data processing and analysis: Python, Pandas, NumPy, Scikit-learn, TensorFlow}
+				
+				\item{DevOps: Docker, Kubernetes, Jenkins, Git}
+				
+				\item{Mobile development: React Native}
+				
+				\item{Machine learning: Python, TensorFlow, Scikit-learn\\}
+			\end{itemize}
+		
+		\item{\textbf{TryHackMe:}}L'idée principale de TryHackMe est de fournir une plate-forme permettant aux individus d'apprendre et de pratiquer des compétences de piratage éthique et de cybersécurité par le biais de défis interactifs et de machines virtuelles.
+		\subsubsection{Acteurs:}
+		\begin{itemize}
+			
+	
+		\item{Les utilisateurs : sont la communauté principale de TryHackMe, qui utilise la plateforme pour apprendre et pratiquer la cybersécurité. }
+		\item{Les instructeurs : sont des experts en sécurité informatique qui créent des défis de sécurité, des scénarios de cyberattaque simulés et des cours en ligne sur la plateforme. }
+		\item {Les partenaires : sont des organisations qui collaborent avec TryHackMe pour fournir des défis de sécurité et des scénarios de cyberattaque à la communauté TryHackMe. }
+			\end{itemize}
+	\subsubsection{Caractéristiques Principales:}
+	\begin{itemize}
+		\item{Environnements de sécurité préconfigurés : TryHackMe fournit des environnements virtuels de sécurité préconfigurés qui permettent aux utilisateurs de pratiquer la cybersécurité dans un environnement sûr et contrôlé.}
+	
+		\item{Cours en ligne : TryHackMe propose également des cours en ligne pour aider les utilisateurs à acquérir des connaissances et des compétences en matière de sécurité informatique, avec des modules d'apprentissage interactifs, des quiz et des évaluations.}
+		\item{Apprentissage basé sur la pratique : la plateforme encourage l'apprentissage basé sur la pratique}
+		\item{Communauté d'utilisateurs : TryHackMe a une communauté active d'utilisateurs qui partagent des connaissances et des expériences en matière de sécurité informatique}
+		\item{Accessible à tous les niveaux de compétences }
+	
+	\end{itemize}
+	\subsubsection{Technologies Utilisées::}
+	\begin{itemize}
+		
+		\item{Virtualisation : Docker, QEMU}
+		
+		\item{Cloud Computing : Amazon Web Services (AWS)}
+		
+		\item{Développement Web : HTML, CSS et JavaScript. ReactJS, Next.js, Node.js et Express.js.}
+		
+		\item{Authentification et autorisation des utilisateurs : JSON Web Tokens (JWT)}
+		
+		
+		
+		\item{Outils de cybersécurité : Nmap, Metasploit, Wireshark et Burp Suite.\\}
+		
+	\end{itemize}
+	\subsubsection{Description des cas d'utilisation:}
+\begin{itemize}
+	\item{\textbf{Suivre un cours sur la cybersécurité sur la plateforme TryHackMe}}
+	\begin{enumerate}
+		\item{L'acteur se connecte à la plate-forme TryHackMe}
+		
+		\item{L'acteur parcourt les cours disponibles et en choisit un à suivre.}
+		
+		\item{l'acteur commence le cours et lit le matériel de cours}
+		
+		\item{l'acteur travaille sur une série de défis interactifs conçus pour tester ses connaissances et sa compréhension du matériel.}
+		
+		\item{Si l'acteur est bloqué sur un défi ou a besoin d'aide, il peut utiliser les astuces et les procédures pas à pas intégrées à la plate-forme.}
+		
+		\item{si l'acteur progresse dans les défis, il gagne des points et des badges qui démontrent ses progrès.}
+		
+		\item{Une fois que acteur a terminé le cours, il peut passer à d'autres cours\\}
+		
+		
+	\end{enumerate}
+\end{itemize}
+	\item{\textbf{Tianchi:}}L'idée principale de Tianchi est de fournir une plate-forme aux scientifiques des données pour participer à des compétitions d'apprentissage automatique et collaborer sur des projets de science des données du monde réel.
+	\subsubsection{Acteurs:}
+	\begin{itemize}
+	
+
+	\item{Alibaba Cloud : C'est l'entreprise qui a créé et gère la plateforme Tianchi (Admin).}
+	\item{Les organisateurs de compétitions : Les organisateurs de compétitions sont les entreprises et les organisations qui proposent des problèmes à résoudre sur la plateforme Tianchi. }
+	\item {Les participants : Ils utilisent leur expertise en IA et en sciences des données pour résoudre les problèmes proposés par les organisateurs de compétitions.}
+	\item{Les formateurs : Les formateurs sont des experts qui travaillent avec Tianchi pour fournir ces ressources de formation.}
+\end{itemize}
+\subsubsection{Caractéristiques Principales:}
+\begin{itemize}
+	\item{Plateforme de compétition en ligne : Tianchi offre des défis en matière d'intelligence artificielle et de sciences des données. Les compétitions sont ouvertes aux participants du monde entier.}
+	
+	\item{Données de qualité et infrastructures de calcul : Tianchi fournit des données de qualité et des infrastructures de calcul pour aider les participants à résoudre les problèmes proposés par les organisateurs de compétitions.}
+	\item{Ressources de formation et de soutien : Tianchi offre également des ressources de formation et des cours pour aider les participants.}
+	\item{Collaboration et partage de connaissances : Les participants peuvent collaborer avec d'autres participants et partager leurs connaissances sur la plateforme Tianchi.}
+	
+\end{itemize}
+\subsubsection{Technologies Utilisées::}
+\begin{itemize}
+	
+	\item{Développement Web : HTML, CSS, JavaScript et jQuery. .}
+	
+	\item{Développement backend : Python, Django et MySQL.}
+	
+	\item{Data Management: : Apache Hadoop, Apache Spark et HDFS (Hadoop Distributed File System)}
+	
+	
+	
+	\item{Cloud Computing : Docker et Kubernetes}
+	
+	
+\end{itemize}
+\subsubsection{Description des cas d'utilisation:}
+\begin{itemize}
+	\item{\textbf{Organiser un concours d'apprentissage automatique sur la plate-forme Tianchi}}
+	\begin{enumerate}
+		\item{Le Data Scientist se connecte à la plate-forme Tianchi }
+		
+		\item{Le Data Scientist crée un nouveau concours en spécifiant le type de concours}
+		
+		\item{Le Data Scientist établit les règles du concours, y compris les dates de début et de fin, le nombre maximum de soumissions par jour et le prix en argent.}
+		
+		\item{Le Data Scientist invite d'autres Data Scientists à participer au concours}
+		
+		
+		
+		\item{Une fois le concours terminé, le Data Scientist qui a créé le concours examine les soumissions et sélectionne le ou les gagnants en fonction de la métrique d'évaluation et des règles du concours.\\}
+		
+		
+	\end{enumerate}
+
+
+\end{itemize}
+\end{enumerate}
+Sur la base de l'étude de marché de Tianchi, HackerRank et TryHackMe, les conclusions et les idées principales peuvent être extraites sont que les trois plates-formes offrent des \textbf{défis} et des \textbf{compétitions} aux individus et aux équipes pour améliorer leurs compétences et mettre en valeur leurs capacités. et offrez des {ressources d'apprentissage} dans un système \textbf{sécurisé} et \textbf{gamifié}
+
+\subsection{Description du projet:}
+La plateforme de compétition d'apprentissage en informatique est un projet innovant qui vise à révolutionner la façon dont les gens apprennent et acquièrent de nouvelles compétences en informatique. La plateforme offrira un environnement compétitif et gamifié pour les utilisateurs afin de participer à des activités d'apprentissage et de se mesurer les uns aux autres.
+
+La plateforme proposera une variété de cours et de modules d'apprentissage, couvrant un large éventail de sujets tels que la programmation, l'informatique, les bases de données, les réseaux et la sécurité informatique. Les cours seront conçus pour être interactifs, captivants et pratiques, avec un accent sur l'application réelle et la résolution de problèmes.
+
+Les développeurs pourront se mesurer les uns aux autres dans diverses compétitions, quiz et autres activités d'apprentissage. La plateforme utilisera un système de points pour suivre les progrès des utilisateurs et les classer par rapport aux autres utilisateurs. Les utilisateurs auront également la possibilité de créer et de participer à des équipes pour collaborer et se concurrencer ensemble.
+
+Afin d'assurer la qualité des cours et des matériels d'apprentissage, la plateforme collaborera avec des instructeurs.
+
+Les instructeurs peuvent également créer des défis et définir les récompenses sur la plateforme de compétition d'apprentissage en informatique. Cela permet aux instructeurs de concevoir des activités d'apprentissage personnalisées pour les étudiants et de les motiver en leur offrant des récompenses.
+
+La plateforme de compétition d'apprentissage en informatique permet également aux recruteurs d'entreprises de publier des offres d'emploi et de recruter des développeurs. Les entreprises peuvent utiliser la plateforme pour trouver des talents hautement qualifiés et compétents en informatique.
+
+Dans l'ensemble, la plateforme de compétition d'apprentissage en informatique offre une solution complète pour les entreprises et les développeurs en fournissant un environnement de compétition, d'apprentissage et de recrutement intégré en une seule plateforme.
+\subsection{Expression des besoins : }
+\subsubsection{Identification des Actors}
+Un acteur représente le rôle d'une entité externe (utilisateur humain ou non) interagissant avec le système. Il n'appartient pas au système mais il fournit de l'information en entrée et/ou la reçoit en sortie.
+Nous avons identifié les cinq types d'acteurs suivants :
+
+
+\begin{table}[!h]
+\caption{Tableau des Acteurs}
+\centering%Pour centrer le tableau
+\begin{tabular}{|c|c|p{0.5\linewidth}|} %Le tableau contient 4 colonnes dont le contenu est centr\'e(c). Si on veut utiliser un texte \`a gauche ou \`a droite, on utilise l pour left (\`a gauche) et r pour right (\`a droite)
+%exemple: \begin{tabular}{c|l c r}
+	% |=(altgr+6) pour ins\'erer une bordure verticale
+	\hline\hline %ins\'erer double lignes horizontales
+	Acteur & Type & Role \\ [0.5ex]
+	\hline
+	
+	Développeur & Principal &le développeur participe aux compétitions et aux défis pour améliorer ses compétences en informatique. Il peut également postuler à des offres d'emploi et communiquer avec les recruteurs.   \\ %pour s\'eparer le contenu de chaque colonne on ins\`ere &
+	\hline
+	Instructeurs & Principal & l'instructeur crée des défis et des activités d'apprentissage pour les étudiants. Il peut également attribuer des notes et des récompenses aux étudiants en fonction de leur performance.  \\
+	\hline
+	Entreprise recruteurs & Principal & le recruteur d'entreprise publie des offres d'emploi et recrute des développeurs talentueux pour son entreprise. Il peut également rechercher des candidats en fonction de leurs compétences et de leurs performances dans les compétitions. \\
+	\hline
+	Administrateur & Secondaire & l'administrateur est responsable de la gestion globale de la plateforme. Il s'assure que la plateforme fonctionne correctement et que les utilisateurs peuvent accéder à toutes les fonctionnalités de manière transparente. Il peut également gérer les comptes utilisateur et résoudre les problèmes techniques. \\
+	\hline
+	Analyste & Secondaire & l'analyste examine les performances des utilisateurs et fournit des informations sur les tendances et les modèles. Il peut également fournir des rapports d'analyse pour aider les instructeurs à améliorer leur enseignement et pour aider les recruteurs à identifier les meilleurs talents. \\ [1ex]
+	% [1ex] pour ajouter un espace vertical
+	\hline %ins\'erer une ligne
+\end{tabular}
+\label{table} %Pour r\'ef\'erencer au besoin ce tableau dans le texte
+\end{table}
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.6]{diagram contexte statique.png}
+\caption{Diagramme Contexte Statique}
+\label{titre de la figure}
+\end{figure}
+\subsubsection{Identification des Besions}
+Les besoins d?un système sont les propriètés que le système doit respecter. On a deux type de
+besoins :
+\subsubsection{Les besoins fonctionnels:}
+\begin{itemize}
+\item{\textbf{Admin}:}
+\begin{itemize}
+\item{\textbf{Créer et gérer des comptes utilisateur :} l'administrateur doit être en mesure de créer et de gérer les comptes utilisateur, y compris les rôles et les autorisations.}
+
+\item{\textbf{Gérer les défis :} l'administrateur doit être en mesure de créer, modifier et supprimer des défis et modifier leurs récompenses, et les affecter à certaines entreprises et instructeurs}
+
+\item{\textbf{Gérer les parcours d'apprentissage :} l'administrateur doit être en mesure de créer et de gérer des parcours d'apprentissage pour les développeurs }
+
+\item{\textbf{Gérer les modules d'apprentissage :} l'administrateur doit être en mesure de créer et de gérer des modules d'apprentissage, qui sont des unités d'enseignement plus petites que les parcours d'apprentissage,et les affecter à des instructeurs}
+
+\item{\textbf{Gérer les offres d'emploi :} l'administrateur doit être en mesure de gérer les offres d'emploi publiées par les recruteurs, y compris leur publication, leur modification et leur suppression.}
+
+\item{\textbf{Gérer les rapports et les analyses :} l'administrateur doit être en mesure de générer des rapports et des analyses sur les performances des utilisateurs, les tendances et les modèles.}
+
+
+
+\item{\textbf{Planifier les événements :} l'administrateur doit être en mesure de planifier des événements tels que des compétitions, pour les utilisateurs de la plateforme.}
+
+\item{\textbf{Gérer les calendriers :} l'administrateur doit être en mesure de gérer les calendriers des événements pour les différents utilisateurs de la plateforme.}
+
+\item{\textbf{Communiquer les horaires :} l'administrateur doit être en mesure de communiquer les horaires des événements aux différents utilisateurs de la plateforme, en utilisant des notifications et des alertes pour assurer une participation optimale.}
+
+%\item{\textbf{Gérer les inscriptions :} l'administrateur doit être en mesure de gérer les inscriptions pour les différents événements organisés sur la plateforme, en veillant à ce que les utilisateurs aient accès aux informations nécessaires pour s'inscrire.}
+
+
+\end{itemize}
+\item{\textbf{Developeur}:}
+\begin{itemize}
+	\item{\textbf{Gérer leur profil :}Les développeurs doivent être en mesure de mettre à jour leur profil en ajoutant de nouvelles informations ou en modifiant les informations existantes, telles que leur nom, leur adresse e-mail, leur photo de profil et leur historique de progression.}
+	\item{Voir la liste des défis }
+	\item{Consulter le calendrier}
+	\item{\textbf{Participer à des défis :} les développeurs doivent être en mesure de participer à des défis de codage pour améliorer leurs compétences et gagner des récompenses.}
+	\item{\textbf{Soumettre des solutions :} les développeurs doivent être en mesure de soumettre leurs solutions pour les défis et recevoir des commentaires sur leur code.}
+	\item{Déposer une plainte concernant le résultat d'un défi ou un entretien}
+	\item{participer à un parcours d'apprentissage}
+	\item{participer à un module d'apprentissage}
+	\item{ Evaluer un module}
+	\item{ Mettre certains entreprises en favoris}
+	\item{\textbf{Postuler à un emploi :} Les développeurs doivent être en mesure de postuler à des offres d'emploi proposées par les entreprises recruteuses sur la plateforme.}
+	\item{Définir un rappel pour un entretien, un défi ou bien un évenement
+	}
+\item{\textbf{Participer à un entretien :} Les développeurs doivent être en mesure de participer à des entretiens d'embauche avec les entreprises recruteuses qui les ont sélectionnés pour une entrevue.}
+	\item{\textbf{Suivre leur progression :} les développeurs doivent être en mesure de suivre leur progression dans les défis et les cours pour voir leur niveau de compétence et leur croissance en tant que développeurs.}
+
+
+
+
+
+
+
+
+
+\end{itemize}
+\item{\textbf{Instructeur}:}
+\begin{itemize}
+	\item{\textbf{Gérer leur profil :} Les instructeurs doivent être en mesure de gérer leur propre profil dans la plateforme.}
+	\item{\textbf{Créer des défis :} Les instructeurs doivent être en mesure de créer des défis pour les développeurs, en "uploading" ou en utilisant une banque de questions }
+	\item{  Gérer ses défis : modifier ou supprimer ses défis}
+\item{\textbf{Voir les soumissions des développeurs et les évaluer :} Les instructeurs doivent être en mesure de voir les soumissions des développeurs pour les défis, ainsi que de les évaluer.}
+\item{\textbf{Gérer les récompenses :} Les instructeurs doivent être en mesure de gérer les récompenses pour les développeurs qui réussissent les modules et les défis.}
+
+\end{itemize}
+\item{\textbf{Analyst}:}
+\begin{itemize}
+	\item{\textbf{Analyser les données de la plateforme :} L'analyste doit être en mesure d'analyser les données de la plateforme pour évaluer l'efficacité des modules d'apprentissage, des défis et des parcours de formation.}
+	
+	\item{\textbf{Gérer les rapports :} L'analyste doit être en mesure de générer des rapports sur les performances des utilisateurs et les résultats des évaluations.}
+	\item{\textbf{Visualisation des données :} L'analyste doit être en mesure de visualiser les données de la plateforme sous forme de graphiques, de tableaux et d'autres formes de représentations visuelles.}
+\item{Superviser l'aspect performance du système}
+\item{\textbf{Gestion des classements :} L'analyste doit être en mesure de gérer les classements pour les différents modules, parcours et défis de la plateforme.}
+\item{Recommander des modules à l'administrateur}
+
+\end{itemize}
+\item{\textbf{Recruteur}:}
+\begin{itemize}
+\item{Gérer leur profil}
+\item{Publier des offres d'emploi}
+\item{Voir la listes des défis}
+\item{Evaluer des défis}
+\item{Favoriser des défis}
+\item{Participer a un entrtien}
+
+
+
+\end{itemize}
+\end{itemize}
+\subsubsection{Besoins non fonctionnels:}
+Ce sont les besoins techniques décrivant toutes les contraintes auxquelles est soumise l'application pour sa réalisation et son bon fonctionnement.
+La nature du notre projet exige certaines règles à respecter qui se résument dans les points suivants :
+
+\begin{itemize}
+\item{ L'ergonomie des interfaces : Les interfaces de notre application doivent être ergonomique et conviviale}
+\item{ La fiabilité : Les résultats apportés par l'application doivent être fiables et reflètent effectivement l'état de la base au moment de son interrogation, c'est-à-dire lors de la mise à jour des données }
+\item{ La disponibilité : Notre application doit être disponible à tout instant pour être utilisée par n'importe quel utilisateur, et doit être facilement accessible via n'importe quel ordinateur.}
+\item{sécurité : Notre application comporte des informations personnelles et sensibles, donc elle doit respecter les règles relatives à la sécurité des systèmes informatiques.}
+\item{ Contrôle d'accès( donnant les privilèges aux utilisateurs)  }
+\item{ intégrité des données }
+
+\end{itemize}
+
+\section{Specification des besions}
+Les cas d'utilisation representent les fonctionnalité de systeme. Alors, chaque cas d'utlisation
+est une suite d?actions réalisé par le systeme en intéraction avec les acteurs de systeme.
+
+\subsection{Description des cas d'utilisation:}
+\begin{itemize}
+	\item{Le recruteur de l'entreprise peut participer à un entretien :
+	 Le recruteur peut communiquer avec le candidat à l'aide des outils de communication de la plateforme, tels que la visioconférence ou le chat, et évaluer les compétences et qualifications du candidat.}
+	
+	\item{Le recruteur de l'entreprise peut gérer son profil :
+	 Le recruteur peut mettre à jour ses informations personnelles, son expérience professionnelle, sa formation et d'autres détails pertinents qui peuvent l'aider dans le processus de recrutement.}
+	
+	\item{Le recruteur de l'entreprise peut publier une offre d'emploi :
+	 Le recruteur peut fournir des informations sur le poste, telles que la description du poste, les qualifications, les responsabilités et les avantages, et recevoir des candidatures de candidats potentiels.}
+	
+	\item{Le recruteur de l'entreprise peut gérer un challenge :
+	 Le recruteur peut créer un défi qui teste les compétences et les connaissances des candidats potentiels et évalue leurs performances en fonction de critères spécifiques.}
+	
+	\item{Le recruteur en entreprise peut privilégier un challenge :
+	 Le recruteur peut sélectionner un défi spécifique et le marquer comme favori, ce qui facilitera son accès à l'avenir.}
+	
+	\item{Le recruteur de l'entreprise peut consulter une liste de défis :
+	 Le recruteur peut voir tous les défis disponibles sur la plateforme, les filtrer en fonction de critères précis et sélectionner ceux qui correspondent à ses besoins de recrutement.}
+ \item{Un instructeur peut afficher une liste de défis :
+  L'instructeur peut voir tous les défis disponibles sur la plateforme, les filtrer en fonction de critères précis et sélectionner ceux qui correspondent à ses besoins pédagogiques.}
+ 
+ \item{Un instructeur peut gérer un challenge :
+  L'instructeur peut créer un défi, modifier un défi existant ou supprimer un défi. Ils peuvent également définir des critères d'évaluation spécifiques et fournir des commentaires aux apprenants.}
+ 
+ \item{Un instructeur peut gérer un module :
+  Un module fait partie d'un parcours d'apprentissage (learning path) et contient des sujets ou du contenu spécifiques. L'instructeur peut modifier un module existant. Ils peuvent également ajouter, supprimer ou réorganiser le contenu du module.}
+ 
+ \item{Un instructeur peut gérer son profil :
+  L'instructeur peut mettre à jour ses informations personnelles, telles que son nom, ses coordonnées et sa formation. Ils peuvent également ajouter leur expertise et leur expérience d'enseignement à leur profil. De plus, l'instructeur peut voir ses cours, ses défis et ses modules, et suivre ses progrès et ses performances.}
+\item{Un développeur peut rechercher un emploi :
+ Le développeur peut rechercher des offres d'emploi en fonction de critères spécifiques, tels que l'emplacement, le type d'emploi et les compétences requises.}
+
+\item{Un développeur peut gérer son profil :
+ Le développeur peut mettre à jour ses informations personnelles, telles que son nom, ses coordonnées et son expérience professionnelle. Ils peuvent également ajouter leurs compétences et leur expertise à leur profil.}
+
+\item{Un développeur peut participer à un module d'apprentissage :
+ Le développeur peut accéder au contenu du module, terminer les devoirs et suivre leur progression.}
+
+\item{Un développeur peut participer à un parcours d'apprentissage :
+ Le parcours d'apprentissage est une série de modules qui couvrent un sujet ou une compétence spécifique. Le développeur peut accéder aux modules, terminer les devoirs et suivre leur progression.}
+
+\item{Un développeur peut participer à un challenge :
+ Le développeur peut relever le défi et recevoir le feedback de l'évaluateur.}
+
+\item{Un développeur peut participer à un entretien :
+permet au développeur de participer à un entretien sur la plateforme compétitive e-learning. Le développeur peut communiquer avec l'intervieweur en utilisant les outils de communication de la plateforme, tels que la visioconférence ou le chat.}
+
+\item{Un développeur peut afficher la liste des offres d'emploi :
+ Le développeur peut voir toutes les offres d'emploi, les filtrer en fonction de critères spécifiques et postuler à celles qui correspondent à ses compétences et qualifications.}
+
+\item{Un développeur peut afficher la liste des défis :
+Ce cas d'utilisation permet au développeur de visualiser une liste de challenges disponibles sur la plateforme compétitive d'e-learning. Le développeur peut voir tous les défis disponibles, les filtrer en fonction de critères spécifiques et participer à ceux qui correspondent à ses compétences et à ses intérêts.}
+
+\item{Un développeur peut afficher le calendrier :
+ permet au développeur de visualiser le calendrier des modules d'apprentissage, des parcours d'apprentissage, des défis et d'autres événements disponibles sur la plateforme compétitive d'apprentissage en ligne.}
+
+\item{Un développeur peut définir un rappel :
+Ce cas d'utilisation permet au développeur de définir un rappel pour les modules d'apprentissage, les parcours d'apprentissage, les défis et d'autres événements disponibles sur la plateforme compétitive d'apprentissage en ligne. Le rappel peut être défini à l'aide du système de notification ou de messagerie de la plateforme}
+\end{itemize}
+\title{Diagramme Admin:}
+
+\begin{figure}[!h]
+\hspace{-1.5cm}
+\includegraphics[scale=0.3]{admin package.png}
+\caption{Paquet d'Admin}
+\label{titre de la figure}
+\end{figure}
+\title{Diagramme Developer:}
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.4]{developer package.png}
+\caption{Paquet de Developer}
+\label{titre de la figure}
+\end{figure}
+\title{Diagramme Instructeur:}
+\begin{figure}[!h]
+\centering
+\subfigure{\includegraphics[width=0.8\linewidth, height=0.4\textheight]{instructor package.png}}
+\caption{Paquet d'Instructeur}
+\label{titre de la figure}
+\end{figure}
+\title{Diagramme Analyste:}
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{Analyst Package.png}
+\caption{Paquet d'Analyst}
+\label{titre de la figure}
+\end{figure}
+\title{Diagramme Recruiter:}
+\begin{figure}[!h]
+\vspace{-0.5cm}
+\includegraphics[scale=0.4]{company recruiter package.png}
+\caption{Paquet du Recruteur Entreprise}
+\label{titre de la figure}
+\end{figure}
+
+\title{Diagramme Globale:}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.2]{Global Usecase Diagram.png}
+	\caption{Diagramme Cas d'Utilisation}
+	\label{titre de la figure}
+\end{figure}
+
+\begin{table}[h]
+
+	\begin{tabular}{|p{3cm}|p{13cm}|}
+		\hline
+		\textbf{Acteur} & Utilisateur \\
+		\hline
+		\textbf{Objectif} & Se connecter à la plateforme AREA51 \\
+		\hline
+		\textbf{Pré-conditions} & L'utilisateur doit être enregistré sur la plateforme \\
+		\hline
+		
+		\textbf{Description} &\begin{minipage}{12cm}
+			\vspace{0.2cm}
+		\begin{enumerate}
+		\item{L'Utilisateur accède à la page de connexion sur la plateforme.}
+		\item{L'Utilisateur saisit son identifiant/E-mail et son mot de passe.}
+		\item{L'Utilisateur clique sur le bouton "Connexion".}
+		\item{La Platfomre vérifie les informations d'identification de l'utilisateur.}
+		\item{Si les identifiants sont valides, la l'Utilisateur à son compte et le redirige vers son tableau de bord.}
+		\item{Si les informations sont correctes, le système envoie un code d'authentification unique à l'utilisateur via un message texte ou une application d'authentification.
+			L'utilisateur entre le code d'authentification sur la page de connexion.
+			Le système vérifie si le code d'authentification est correct.
+			Si le code est correct, l'utilisateur est connecté avec succès et accède à son compte.}
+		
+	 	\vspace{0.2cm}
+		\end{enumerate}
+		\end{minipage}\\
+		\hline
+		\textbf{Post-conditions} & L'utilisateur est authentifié et peut accéder aux fonctionnalités réservées aux utilisateurs connectés. \\
+		\hline
+		\textbf{Scenario Alternatifs:} &\textbf{A1:} l'utilisateur a oublié son mot de passe  \begin{minipage}{12cm}
+			\begin{enumerate}
+				\vspace{0.3cm}
+				\item{ Il cliquer sur le lien "Mot de passe oublié" pour recevoir un e-mail avec des instructions pour réinitialiser son mot de passe. } 
+				\vspace{0.2cm}
+			\end{enumerate}
+		\end{minipage}
+		\textbf{A2:} l'utilisateur n'a pas reçu l'e-mail dans les 5 minutes 
+		\vspace{0.2cm}
+		\begin{minipage}{12cm}
+		\begin{enumerate}	
+		\item{Il contacte l'assistance de la plateforme pour obtenir de l'aide}
+		\end{enumerate}
+	\end{minipage}
+	\textbf{A3:} L'utilisateur veut se connecter en utilisant son compte gmail
+	
+	\begin{minipage}{12cm}
+		\begin{enumerate}	
+			\vspace{0.2cm}
+			\item{L'utilisateur clique sur l'icône de la plateforme.}
+			\item{La plateforme redirige l'utilisateur vers la page correspondant.}
+			\item{L'utilisateur saisit ses identifiants dans la page redirigée ou choisit le compte qu'il souhaite poursuivre.}
+			\item{ connexion est réussie et il est renvoyé sur la plateforme connecté.}
+		\end{enumerate}
+		\end{minipage}\\
+		\hline
+		\textbf{Scenario d'Exception} &\textbf{E1:} Si l'utilisateur entre des informations de connexion incorrectes  \begin{minipage}{12cm}
+			\begin{enumerate}
+				\vspace{0.3cm}
+				\item{Un message d'erreur s'affiche et l'utilisateur est invité à réessayer.} 
+				\item{Si l'utilisateur a essayé de se connecter sans succès 5 fois, l'utilisateur ne peut plus essayer et doit attendre une heure pour réessayer}
+			\end{enumerate}
+		\end{minipage}\\
+		
+		\hline		
+	\end{tabular}
+	\caption{Fiche Descriptive du cas "Connexion de l'utilisateur"}
+\end{table}
+\title{Diagramme Sequence:}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.4]{logindss.png}
+	\caption{Diagramme Sequence Système du Cas "Connexion"}
+	\label{titre de la figure}
+\end{figure}
+\title{Maquette du login:}
+\begin{figure}[h]
+	\vspace{0.5cm}
+	\includegraphics[scale=0.23]{login maquette.png}
+	\vspace{0.5cm}	
+	\caption{Maquette du cas d'utilisation "Se Connecter":}
+	\includegraphics[scale=0.23]{Forgot Password.png}
+	\caption{Maquette du cas d'utilisation "Se Connecter":}
+	
+	\label{titre de la figure}
+\end{figure}
+\begin{figure}[h]
+		\vspace{0.5cm}
+	
+	\includegraphics[scale=0.23]{Verify.png}
+	\caption{Maquette du cas d'utilisation "Se Connecter":}
+\end{figure}
+\begin{table}[h]
+	
+	\begin{tabular}{|p{3cm}|p{13cm}|}
+		\hline
+		\textbf{Acteur} & Instructeur \\
+		\hline
+			\textbf{Acteurs Secondaires} & Admin \\
+		\hline
+		\textbf{Objectif} & créer un défi \\
+		\hline
+		\textbf{Pré-conditions} & L'Instructeur doit avoir un compte valide sur la plateforme. 
+		L'instructeur doit avoir les autorisations nécessaires pour créer des défis.\\
+		\hline
+		
+		\textbf{Description} &\begin{minipage}{12cm}
+			\vspace{0.2cm}
+			\begin{enumerate}
+				\item{L'Instructeur se connecte à son compte sur la plateforme.}
+				\item{L'instructeur accède à la section "Practice".}
+				\item{l'instructeur accède à sa page de profil, et clique sur le bouton 'compétitions'}
+				\item{il pourra voir la liste des compétitions qu'il a créées, il clique sur ajouter (une petite icône +)}
+				\item{La plateforme envoie l'instructeur sur la page du poste de travail où il trouve tous les outils qu'il peut utiliser pour créer son competition.}
+				\item{L'instructeur remplit le formulaire de création de défi, y compris des détails tels que le titre du défi, la section code, la description, les règles, les exigences, les critères d'évaluation et les récompenses.}
+				\item{L'instructeur peut choisir de définir des paramètres supplémentaires, tels que le nombre de participants autorisés, la durée du défi et toute technologie ou outil spécifique requis pour participer.}
+				\item{L'instructeur examine les détails du défi et s'assure qu'ils sont exacts et complets.}
+				\item{L'instructeur soumet le défi pour examen par la plate-forme d'apprentissage compétitive.}
+				\item{La plate-forme d'apprentissage concurrentiel examine le défi pour s'assurer qu'il respecte ses directives et ses politiques.}
+				\item{Une fois le défi approuvé, il est publié sur la plateforme.
+				Les participants intéressés peuvent consulter et postuler pour participer au défi.}
+				\item{L'instructeur évalue les soumissions et sélectionne les solutions gagnantes en fonction des critères d'évaluation spécifiés.}
+				\item{Les résultats du défi sont publiés sur la plateforme, et l'instructeur peut fournir des commentaires aux participants et attribuer des prix.}
+				\vspace{0.2cm}
+			\end{enumerate}
+		\end{minipage}\\
+		\hline
+		
+	\end{tabular}
+	\caption{Fiche Descriptive du cas "Connexion de l'utilisateur"}
+\end{table}
+\begin{minipage}{13cm}
+
+\end{minipage}
+\begin{table}
+	
+	\begin{tabular}{|p{3cm}|p{13cm}|}
+		
+		\hline
+	\textbf{Post-conditions} &
+	\begin{minipage}{12cm}
+		\begin{itemize}
+			\item{L'instructeur a créé un défi sur la plateforme.}
+			\item{Les participants intéressés peuvent consulter et postuler pour participer au défi.}
+			\item{L'instructeur peut avoir décerné des prix et fourni des commentaires aux participants en fonction de leur performance dans le défi.} 
+		\end{itemize}
+	\end{minipage}\\
+	\hline
+	\vspace{0.2cm}
+	\textbf{Scenario Alternatifs:} &\textbf{A1:} L'instructeur rencontre des problèmes lors de la création du défi, tels que des champs obligatoires manquants ou des difficultés techniques  \begin{minipage}{12cm}
+		\begin{enumerate}
+			\vspace{0.3cm}
+			\item{ l'instructeur est invité à réviser le formulaire avant de le soumettre. } 
+			
+		\end{enumerate}
+	\vspace{0.2cm}
+	\end{minipage}
+
+	\textbf{A2:} L'Admin détermine que le défi ne respecte pas ses directives ou ses politiques 
+	
+	\begin{minipage}{12cm}
+		\vspace{0.2cm}
+		\begin{enumerate}	
+			\item{l'instructeur peut être averti et invité à réviser ou à supprimer le défi.
+			}
+			\item{Il peut contacter l'assistance de la plateforme pour clairification.}
+			
+		\end{enumerate}
+	\vspace{0.2cm}
+	\end{minipage}
+	\textbf{A3:} L'instructeur décide de reporter le travail sur le concours avant de le soumettre
+
+	\begin{minipage}{12cm}
+			\vspace{0.2cm}
+		\begin{enumerate}	
+			\item{l'instructeur peut sauvgarder son travaill on cliquant sur le button "sauvgarder" .
+			}
+			
+		\end{enumerate}
+	\end{minipage}\\
+\hline
+	
+	\textbf{Scenario d'Exception} &\textbf{E1: }l'instructeur découvre un bug en essayant de terminer la création de son défi
+	\begin{minipage}{12cm}
+		\vspace{0.2cm}
+		\begin{enumerate}	
+			\item{l'instructeur contacte la plateforme pour obtenir de l'aide
+			}
+			
+		\end{enumerate}
+	\end{minipage}\\
+
+	\hline		
+	\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+	\hspace{0cm}
+	\includegraphics[scale=0.4]{create a challenge400.png}
+	\caption{Diagramme Sequence Système du Cas "Créer un défi"}
+	\label{titre de la figure}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.25]{create a challenge.png}
+	\caption{Maquette du Cas "Créer un défi"}
+	\label{titre de la figure}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.25]{Create a Challenge22 (1).png}
+	\caption{Maquette du Cas "Créer un défi"}
+	\label{titre de la figure}
+\end{figure}
+\title{Planification des competitions}
+\begin{table}[h]
+	
+	\begin{tabular}{|p{3cm}|p{13cm}|}
+		\hline
+		\textbf{Acteurs Primaires} & Admin \\
+		\hline
+		\textbf{Acteurs Secondaires} & Instructeurs \\
+		\hline
+		\textbf{Objectif} & Planification d'un concours \\
+		\hline
+		\textbf{Pré-conditions} & L'administrateur est connecté à la plateforme AREA51.
+		Les instructeurs ont créé des défis qui sont disponibles pour la planification.\\
+		\hline
+		
+		\textbf{Description} &\begin{minipage}{12cm}
+			\vspace{0.2cm}
+			\begin{enumerate}
+				\item{L'administrateur accède à à sa page de profil}
+				\item{L'administrateur clique sur le bouton "planifier une compétition"}
+				\item{La page affiche Une liste des défis disponibles qui peuvent être planifié.}
+				\item{L'administrateur sélectionne les défis qu'il souhaite planifier.}
+				\item{Pour chaque défi sélectionné, l'administrateur attribue une date et une heure.}
+				\item{L'administrateur examine et confirme le planfication.}
+				\item{La plateforme enregistre le calendrier des compétitions et envoie un message de confirmation à l'administrateur.}
+				\vspace{0.2cm}
+			\end{enumerate}
+		\end{minipage}\\
+		\hline
+		\textbf{Post-conditions} &
+		\begin{minipage}{12cm}
+			\begin{itemize}
+				\item{Le calendrier des compétitions est enregistré dans la plateforme AREA51.}
+				\item{Les instructeurs et les participants peuvent consulter le calendrier des compétitions et planifier en conséquence.} 
+			\end{itemize}
+		\end{minipage}\\
+		\hline
+		\vspace{0.2cm}
+		\textbf{Scenario Alternatifs:} &\textbf{A1:} il n'y a pas de défis disponibles pour la planification \begin{minipage}{12cm}
+			\begin{enumerate}
+				\vspace{0.3cm}
+				\item{ la plateforme affiche un message indiquant qu'il n'y a pas de défis à planifier. } 
+				
+			\end{enumerate}
+			\vspace{0.2cm}
+		\end{minipage}\\
+		
+	
+		\hline
+		
+		\textbf{Scenario d'Exception} &
+		\begin{minipage}{12cm}
+			\vspace{0.2cm}
+		
+		\end{minipage}\\
+		\hline		
+	\end{tabular}
+	\caption{Fiche Descriptive du cas "Planifier une Competition"}
+\end{table}
+\begin{figure}
+	\vspace{-7cm}
+	\hspace{1cm}
+	\includegraphics[scale=0.5]{plan a competition.png}
+	\caption{Diagramme du Sequence du cas "planifier une Compétition"}
+	\label{titre de la figure}
+\end{figure}
+
+\begin{figure}[h]
+	\hspace{0.8cm}
+	\vspace{-0.8cm}
+	\includegraphics[scale=0.25]{planifier.png}
+	\vspace{0.8cm}
+	\caption{Maquette du Cas "planifier une Compétition"}
+	\label{titre de la figure}
+\end{figure}
+\begin{figure}[h]
+	 \hspace{0.8cm}
+	\includegraphics[scale=0.25]{planifier (1).png}
+	\caption{Maquette du Cas "planifier une Compétition"}
+	 \vspace{0.8cm}
+	\label{titre de la figure}
+	 \hspace{0.8cm}
+	\includegraphics[scale=0.25]{Planifier2.png}
+	\caption{Maquette du Cas "planifier une Compétition"}
+	\label{titre de la figure}
+\end{figure}
+\begin{table}[h]
+	
+	\begin{tabular}{|p{3cm}|p{13cm}|}
+		\hline
+		\textbf{Acteurs Primaires} & Developer \\
+		\hline
+		\textbf{Acteurs Secondaires} & Instructeurs \\
+		\hline
+		\textbf{Objectif} & Participation d'un développeur à un défi sur une plateforme. La participation peut inclure la résolution du défi et la voir les résultats.\\
+		\hline
+		\textbf{Pré-conditions} & Le Développeur doit avoir un compte valide sur la plateforme d'apprentissage compétitive.
+		Le développeur doit disposer les conditions nécessaires pour participer aux défis.\\
+		\hline
+		
+		\textbf{Description} &\begin{minipage}{12cm}
+			\vspace{0.2cm}
+			\begin{enumerate}
+				\item{Le Développeur se connecte à son compte.}
+				\item{Le développeur accède à la section "Pratiquer".}
+				\item{Le développeur accède à la section "Competitions".}
+				\item{Le développeur parcourt les competitions disponibles et sélectionne la competition auquel il souhaite participer.}
+				
+				\item{Le développeur examine la description du défi, les règles et tout matériel associé fourni par le createur de competition.}
+				%\item{Le développeur peut choisir de résoudre la competition individuellement ou en équipe si la participation de l'équipe est autorisée.}
+				\item{Le développeur clique sur le bouton s'inscrire maintenant}
+				\item{le développeur remplit le formulaire d'inscription en indiquant les membres de son équipe (s'il s'agit d'une competition de travail en équipe).}
+				\item{le développeur clique ensuite sur le bouton de confirmation}
+				\item{la plateforme génère ensuite un lien de l'espace de résolution de défis que le développeur doit enregistrer}
+				\item{lorsque la date et l'heure du concours arrivent, le développeur utilise le lien pour accéder à la page de competition.}
+				\item{Le développeur travaille à résoudre le défi en fonction des exigences spécifiées et dans les délais impartis.}
+				\item{Une fois le défi résolu, le développeur soumet sa solution via la plateforme.}
+				\item{La plateforme teste d'abord la solution en fonction des cas de test.}
+				\item{Les juges du défi examine les soumissions et sélectionne les solutions gagnantes en fonction des critères d'évaluation spécifiés.}
+				\item{Les résultats du défi sont affichés sur la plateforme, et le développeur peut voir son placement et les résultats des autres participants.}
+				\item{Le développeur peut recevoir une reconnaissance ou des récompenses pour sa participation et sa performance au défi.}
+				\vspace{0.2cm}
+			\end{enumerate}
+		\end{minipage}\\
+		\hline
+			\end{tabular}
+	\caption{Fiche Descriptive du cas "Participer dans une Competition"}
+\end{table}
+
+\begin{table}
+	
+	\begin{tabular}{|p{3cm}|p{13cm}|}
+		\hline
+		\textbf{Post-conditions} &
+		\begin{minipage}{12cm}
+			\begin{itemize}
+				\item{Le Développeur a participé au challenge sur la plateforme d'apprentissage compétitive..}
+				\item{Le développeur peut avoir reçu une reconnaissance ou des récompenses pour ses performances.} 
+			\end{itemize}
+		\end{minipage}
+	\\
+		\hline
+		\vspace{0.2cm}
+		\textbf{Scenario Alternatifs:} &\textbf{A1:} Le développeur a soumis un certain nombre de fois et n'a pas réussi les cas de test ou son temps s'est écoulé \begin{minipage}{12cm}
+			\begin{enumerate}
+				\vspace{0.3cm}
+				\item{Le développeur a échoué au défi et il est renvoyé à la page de description du défi.} 
+			\end{enumerate}
+			\vspace{0.2cm}
+		\end{minipage}
+	\textbf{A2:} Un ou plusieurs membres de l'équipe du Developeur n'ont pas participé au défi. \begin{minipage}{12cm}
+			\begin{enumerate}
+			\vspace{0.3cm}
+			\item{Le participant est regroupé avec des joueurs aléatoires qui n'ont pas non plus de membres d'équipe.}
+		\end{enumerate}
+		\vspace{0.2cm}
+	\end{minipage}\\
+		\hline
+		\textbf{Scenario d'Exception} & \textbf{E1:} Le développeur est déjà inscrit à un autre competition dans le délai du concours auquel il souhaite participer
+		\begin{minipage}{12cm}
+			\vspace{0.2cm}
+			\begin{enumerate}
+				\item{La plateforme envoie un message indiquant au développeur qu'il est déjà inscrit à un concours dans le même laps de temps.}
+			\end{enumerate}
+		\end{minipage}\\
+		\hline		
+			\end{tabular}
+\caption{Fiche Descriptive du cas "Participer dans une Competition"}
+\end{table}
+\begin{figure}[h]
+	\hspace{3cm}
+	\includegraphics[scale=0.3]{participate in a challenge.png}
+	\caption{Diagramme de séquence du Cas "Participer dans une compétition"}
+	\label{titre de la figure}
+\end{figure}
+\begin{figure}[h]
+	\hspace{0.8cm}
+	\includegraphics[scale=0.25]{participer.png}
+	\caption{Maquette du Cas "participer une Compétition"}
+	\vspace{0.8cm}
+	\label{titre de la figure}
+	\hspace{0.8cm}
+	\includegraphics[scale=0.25]{participer2.png}
+	\caption{Maquette du Cas "participer une Compétition"}
+	\label{titre de la figure}
+\end{figure}
+\begin{table}[h]
+	
+	\begin{tabular}{|p{3cm}|p{13cm}|}
+		\hline
+		\textbf{Acteurs Primaires} & Le Recruteur \\
+		\hline
+		\textbf{Acteurs Secondaires} & / \\
+		\hline
+		\textbf{Objectif} & ce cas d'utilisation décrit le processus par lequel un recruteur d'entreprise publie une offre d'emploi sur une plateforme d'apprentissage compétitive\\
+		\hline
+		\textbf{Pré-conditions} & Le Recruteur d'entreprise doit avoir un compte valide sur la plateforme.\\
+		\hline
+		
+		\textbf{Description} &\begin{minipage}{12cm}
+			\vspace{0.2cm}
+			\begin{enumerate}
+				\item{Le recruteur  se connecte à son compte.}
+				\item{Le recruteur  accède à la section "Publier une offre d'emploi".}
+				\item{Le recruteur remplit le formulaire d'offre d'emploi, y compris des détails tels que le titre du poste, la description du poste, les compétences requises, le lieu et la rémunération.}
+				\item{Le recruteur peut également choisir de définir des paramètres supplémentaires, tels qu'une date limite pour les candidatures, une date de début préférée et des questions de présélection.}
+				
+				\item{Le recruteur de l'entreprise examine les détails de l'offre d'emploi et s'assure qu'ils sont exacts et complet.}
+				%\item{Le développeur peut choisir de résoudre la competition individuellement ou en équipe si la participation de l'équipe est autorisée.}
+				\item{ Le recruteur de l'entreprise soumet l'offre d'emploi. La plate-forme examine l'offre d'emploi pour s'assurer qu'elle respecte ses directives et ses politiques.}
+				\item{L'offre d'emploi est publiée sur la plateforme .}
+				\item{Les candidats intéressés peuvent postuler à l'emploi via la plateforme .}
+				\item{Le recruteur examine les candidatures reçues et peut choisir de contacter les candidats pour d'autres entretiens ou de leur proposer le poste.}
+				\item{La plateforme invite le développeur à relever un défi en rapport avec le poste. Le développeur termine le défi et le soumet pour examen. Le recruteur examine la soumission du défi et contacte le développeur pour programmer un entretien. Le développeur passe un entretien avec le recruteur. Le recruteur décide d'embaucher ou non le développeur. Si le développeur est embauché, le recruteur envoie une lettre d'offre au développeur via la plateforme. Le développeur accepte la lettre d'offre via la plateforme}
+					\item{La plateforme invite le développeur à relever un défi en rapport avec le poste. Le développeur termine le défi et le soumet pour examen. Le recruteur examine la soumission du défi et contacte le développeur pour programmer un entretien. Le développeur passe un entretien avec le recruteur. Le recruteur décide d'embaucher ou non le développeur. Si le développeur est embauché, le recruteur envoie une lettre d'offre au développeur via la plateforme. Le développeur accepte la lettre d'offre via la plateforme}
+				\vspace{0.2cm}
+			
+				\end{enumerate}
+		\end{minipage}\\
+	\hline
+\end{tabular}
+\caption{Fiche Descriptive du cas "Participer dans une Competition"}
+\end{table}
+
+\begin{table}
+
+\begin{tabular}{|p{3cm}|p{13cm}|}
+\hline
+
+
+\hline
+	
+	
+\textbf{Scenarios Altérnatifs} & {A1:} Si le recruteur rencontre des problèmes lors de la publication de l'offre d'emploi, tels que des champs obligatoires manquants ou des difficultés techniques, il peut être invité à réviser le formulaire avant de le soumettre.\vspace{0.2cm}
+
+\textbf{A2:}  Si la plate-forme d'apprentissage compétitive détermine que l'offre d'emploi ne respecte pas ses directives ou politiques, le recruteur de l'entreprise peut être informé et invité à réviser ou à supprimer l'offre d'emploi	
+\end{tabular}
+
+	\caption{Fiche Descriptive du cas "Poster une offre d'emploi"}{\tiny }
+\end{table}
+\begin{figure}[h]
+	\hspace{3cm}
+	\includegraphics[scale=0.5]{DSS POST JOB 2.png}
+	\caption{Diagramme de séquence du Cas "Publier une offre d'emploi"}
+	\label{titre de la figure}
+\end{figure}
+\begin{figure}[h]
+	\hspace{2cm}
+	\includegraphics[scale=0.22]{Post a Job Offer.png}
+	\caption{Maquette du Cas "Publier une offre d'emploi"}
+	\label{titre de la figure}
+\end{figure}
+
+\begin{figure}[h]
+	\hspace{2cm}
+	\includegraphics[scale=0.22]{Post a Job Offer (1).png}
+	\caption{Maquette du Cas "Publier une offre d'emploi"}
+	\label{titre de la figure}
+		\section{Conclusion}
+	En conclusion de ce premier chapitre, nous avons exploré la phase d'analyse des besoins dans le cadre du processus unifié de développement de logiciels. Nous avons vu que cette phase est essentielle pour comprendre les besoins des utilisateurs et des parties prenantes, et pour définir les exigences fonctionnelles et non fonctionnelles du système. Nous avons également examiné en détail les différents aspects de l'analyse des besoins, tels que l'étude de marché, la description de projet, l'expression des besoins, la spécification des besoins et la création de fiches descriptives.
+\end{figure}\chapter{Titre Chapitre 2}
+
+%Insertion de l'ent\^ete de page avec num\'ero de page et titre du chapitre
+\thispagestyle{fancy}
+
+\section{Introduction}
+%Si la d\'efinition par exemple a un titre on l'\'ecrit ici \textbf{taper votre titre}
+\begin{example}
+\textbf{}
+\label {}%Entre {} tapez votre label. Pour le r\'ef\'erencer vous utilisez \ref{nom label}
+
+Exemple 1
+\end{example}
+
+\begin{example}
+\textbf{}
+\label {}%Entre {} tapez votre label. Pour le r\'ef\'erencer vous utilisez \ref{nom label}
+
+Exemple 2
+\end{example}
+
+\section{Titre 1}
+\begin{definition}
+\textbf{Titre de la d\'efinition s'il existe}
+\label {}%Entre {} tapez votre label. Pour le r\'ef\'erencer vous utilisez \ref{nom label}
+
+D\'efinition 1
+\end{definition}
+
+\begin{definition}
+\textbf{}
+\label {}%Entre {} tapez votre label. Pour le r\'ef\'erencer vous utilisez \ref{nom label}
+
+D\'efinition 2
+\end{definition}
+
+\section{Titre 2}
+
+\begin{theorem}
+\textbf{Titre du th\'eor\`eme s'il existe}
+\label {produit}
+
+Th\'eor\`eme 1
+\end{theorem}
+
+\begin{theorem}
+\textbf{}
+\label {}%Entre {} tapez votre label. Pour le r\'ef\'erencer vous utilisez \ref{nom label}
+
+Th\'eor\`eme 2 qui fait r\'ef\'erence au th\'eor\`eme \ref{produit}
+\end{theorem}
+
+\chapter{Titre Chapitre 3}
+%Insertion de l'ent\^ete de page avec num\'ero de page et titre du chapitre
+\thispagestyle{fancy}
+\section{Introduction}
+
+\section{Titre 1}
+
+
+\section{Titre 2}
+
+
+\chapter*{Conclusion g\'en\'erale et perspectives}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Perspectives} %Insertion manuelle des perspectives dans la table de mati\`eres car cette derni\`ere est non num\'erot\'ee (chapter*)
+Comme perspectives, un travail est d\'{e}j\`{a} abord\'{e} concernant les
+points suivants:\\
+\begin{itemize}
+\item {perspective 1,} \\
+\item {perspective 2,} \\
+\item {perspective 3,}\\
+\item {perspective 4.}
+\end{itemize}
+
+
+\begin{thebibliography}{2}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Bibliographie} %Insertion manuelle de la bibliographie dans la table de mati\`eres
+
+\bibitem[Ref1]{cle} Auteur, TITRE, \'editeur, ann\'ee
+\vskip 0.5cm
+\bibitem[LAM94]{lam1} L. LAMPORT, {\it \LaTeX : A Document
+	preparation system, Addison-Wesley, 1994}
+\vskip 0.5cm
+\end{thebibliography}
+%[ref1] d\'efinit le label qui apparaÃ®tra dans la bibliographie et dans le texte apr\`es appel \`a la commande \cite{cle}.
+
+
+
+\chapter*{Annexe}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Annexe} %Insertion manuelle de l'index dans la table de mati\`eres. Si vous n'avez pas besoin de l'indexe, supprimer le chapitre:  \chapter*{Annexe}
+
+\end{document}
