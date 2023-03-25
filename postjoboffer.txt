@@ -1,0 +1,8 @@
+@startuml
+Actor Company_Recruiter
+Company_Recruiter -> AREA51: Navigate to job posting page
+AREA51 -> Company_Recruiter: Display job posting form
+Company_Recruiter -> AREA51: Fill out job posting form
+AREA51 -> AREA51: Verify job posting details
+AREA51 -> Company_Recruiter: Redirect to job postings page
+@enduml

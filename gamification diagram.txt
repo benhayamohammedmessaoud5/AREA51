@@ -1,0 +1,20 @@
+@startuml
+Actor Frank as f
+
+Note "
+
+note right of f
+  SECURITY { Practise : Problem 1 (10 coins), Problem 2(20XP)
+                     Learning : Learning path (15XP)}
+end note
+note bottom of f
+  SECURITY { Practise : Problem 1 (10 coins), Problem 2(20XP)
+                     Learning : Learning path (15XP)}
+end note
+
+
+note right of (f)
+  XP : 100XP
+  COINS : 10 Coins
+end note 
+@enduml
