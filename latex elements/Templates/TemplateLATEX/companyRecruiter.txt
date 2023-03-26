@@ -1,0 +1,52 @@
+@startuml
+actor CompanyRecruiter as d
+left to right direction
+package CompanyRecruiter{
+
+usecase "Profile Management" as g
+usecase "Post A Job Offer" as post
+usecase "Submit Certificate" as submit
+usecase "Challenge Management" as cm
+usecase "Favor Challenge" as favor
+usecase "View List of Challenges" as viewChallenges
+usecase "Participate in An Interview" as p
+
+
+usecase "Delete" as delete
+usecase "Update" as u
+usecase "Create" as c
+ 
+
+
+usecase "Create" as c2
+usecase "Update" as u2
+usecase "Delete" as delete2
+
+
+
+}
+
+d-->g
+d-->post
+d-->cm
+d-->viewChallenges
+d-->p
+
+
+
+g <|-- c
+g <|-- u 
+g <|-- delete
+
+
+cm <|-- c2
+cm <|-- u2
+cm <|-- delete2
+
+
+
+
+
+viewChallenges <.. favor : <<extends>>
+c ..> submit : <<includes>>
+@enduml

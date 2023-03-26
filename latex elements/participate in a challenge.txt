@@ -1,0 +1,70 @@
+@startuml
+title Participation à Défi
+
+actor Developeur as U
+participant AREA51
+
+== Inscription à Défi ==
+actor Instructeur as a
+ref over U, AREA51 : Authentification
+U -> AREA51 : clique sur le bouton "Practice"
+AREA51 --> U : Affiche la page pratique
+U -> AREA51 : clique sur le bouton "Competitions"
+AREA51 --> U : Affiche la liste des Competitions
+U->AREA51 : sélectionne une competition
+AREA51-->U : Affiche les details du Competition
+U->AREA51 : Clique sur le  bouton "Register Now"
+AREA51 --> U : Afficher formulaire
+loop Erreur de remplissage
+U--> AREA51 : Remplit le formulaire
+U-> AREA51 : clique sur le bouton soumettre
+AREA51 -> AREA51: vérifie le formulaire 
+break Aucun Error
+
+AREA51-->U: Envoie un message de réussite
+AREA51->AREA51 : génère un lien pour accéder à la competition
+AREA51 --> a : notification de nouvelle inscription
+AREA51 --> U : envoie le lien
+end
+AREA51-->U: Envoie un message indiquant les sections incorrectes
+
+end
+== Pariticpation à Défi ==
+U -> U : Entre le lien du Competition
+loop état = En Compétition
+alt tous les membres de l'équipe se joignent
+loop Cas de test échoués && Essaies < Un Certain Nombre && temps passé < temps restant
+U --> AREA51 : résout le défi
+U -> AREA51 : Clique sur le Bouton "Submit"
+AREA51 -> AREA51 : Vérifie la Solution
+AREA51 --> U : Message d'échec
+break cas de test réussis
+AREA51 --> U : Message du réussis
+AREA51 --> U : Change l'état
+end
+break Essaies > Un Certain Nombre
+AREA51 --> U : Message d'échec pour la dérnière fois
+AREA51 --> U : Change l'état
+end
+break temps passé > temps restant
+AREA51 --> U : Message d'échec pour la dérnière fois
+AREA51 --> U : Change l'état
+end
+end
+else certains membres n'ont pas rejoint
+AREA51 -> AREA51 : Recherche des participants sans équipes
+AREA51 --> U : Regroupe avec une nouvelle équipe
+end
+break état != En Competition
+AREA51 --> U : Redirige vers la page d'accueil
+end
+end
+== Affichage des Resulats ==
+alt réussis
+AREA51 --> U : Incremente XP
+else échec
+end
+AREA51 --> U : Message d'affichage avec lien
+U -> AREA51 : Clique le lien
+AREA51 --> U : Affiche les Résultat
+@enduml

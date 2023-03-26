@@ -1,0 +1,151 @@
+@startuml
+actor CompanyRecruiter as d
+actor Instructor as i
+actor Developer as deve
+actor Admin as a
+actor Analyst as ana
+left to right direction
+ rectangle AREA_51{
+
+usecase "Profile Management" as g
+usecase "Profile Management" as g1
+usecase "Profile Management" as g2
+usecase "Profile Management" as g3
+usecase "Post A Job Offer" as post
+
+usecase "Challenge Management" as cm
+usecase "Favor Challenge" as favor
+usecase "View List of Challenges" as viewChallenges
+usecase "View List of Challenges" as viewChallenges1
+usecase "View List of Challenges" as viewChallenges2
+usecase "View List of Challenges" as viewChallenges3
+usecase "Participate in An Interview" as p
+usecase "Authentification" as ath
+
+
+usecase "View Applications" as view
+
+usecase "Learning Path Management" as learning
+usecase "Challenge Management" as cg
+usecase "Schedule Management" as schedule
+usecase "Module Management" as md
+
+usecase "User Mangement" as um
+
+
+
+
+usecase "View List of Challenges" as viewChallenges
+
+
+usecase "Participate to A Learning Module" as p1
+usecase "Participate to A Learning Path" as p2
+usecase "Participate to A Challenge" as p3
+usecase "Particiapte to An Interview" as p4
+usecase "View Job Offer List" as job
+
+
+usecase "View List of Challenges" as s
+usecase "View Schedule" as s2
+
+usecase "Set A reminder" as reminder
+
+
+usecase "Search for a Job" as search
+
+usecase "Profile Management" as g
+usecase "Recommed a Module" as recommend
+usecase "View List of Users" as view
+
+usecase "Leaderboard Management" as leader
+
+usecase "Statistics Management" as statistics
+
+usecase "View List of Challenges" as viewChallenges
+
+usecase "Profile Management" as g
+usecase "Post A Job Offer" as post
+
+usecase "Challenge Management" as cm
+usecase "Favor Challenge" as favor
+usecase "View List of Challenges" as viewChallenges
+usecase "Participate in An Interview" as p
+
+
+
+
+
+
+}
+i-->g
+i-->cg
+i-->md
+i-->viewChallenges
+
+d-->g1
+d-->post
+d-->cm
+d-->viewChallenges1
+d-->p
+d--favor
+
+deve-->g2
+deve -- p1
+deve -- p3
+deve-->p2
+deve-->p4
+deve-->s
+deve-->s2
+deve-->reminder
+deve-->search
+deve-->job
+
+a--learning
+a-->schedule
+a-->um
+a-->view
+a-->viewChallenges2
+
+ana--statistics
+ana--g3
+ana--recommend
+ana--view
+ana--leader
+ana--viewChallenges3
+
+g ..>ath: <<includes>>
+cg ..>ath: <<includes>>
+md ..>ath: <<includes>>
+viewChallenges ..>ath: <<includes>>
+
+g1 ..>ath: <<includes>>
+post ..>ath: <<includes>>
+cm ..>ath: <<includes>>
+viewChallenges1 ..>ath: <<includes>>
+p ..>ath: <<includes>>
+favor ..>ath: <<includes>>
+
+g2 ..>ath: <<includes>>
+p1 ..>ath: <<includes>>
+p3 ..>ath: <<includes>>
+p2 ..>ath: <<includes>>
+p4 ..>ath: <<includes>>
+s ..>ath: <<includes>>
+s2 ..>ath: <<includes>>
+reminder ..>ath: <<includes>>
+search ..>ath: <<includes>>
+job ..>ath: <<includes>>
+
+learning ..>ath: <<includes>>
+schedule ..>ath: <<includes>>
+um ..>ath: <<includes>>
+view ..>ath: <<includes>>
+viewChallenges2 ..>ath: <<includes>>
+
+statistics ..>ath: <<includes>>
+g3 ..>ath: <<includes>>
+recommend ..>ath: <<includes>>
+view ..>ath: <<includes>>
+leader ..>ath: <<includes>>
+viewChallenges3 ..>ath: <<includes>>
+@enduml

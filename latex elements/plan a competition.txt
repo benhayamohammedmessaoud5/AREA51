@@ -1,0 +1,32 @@
+@startuml
+title Planfication des Competitions
+actor Admin as U
+participant AREA51 as k
+
+actor Instructeur as a
+ref over U, k : Authentification
+U -> k : Clique sur l'icône du profil
+k --> U : Affiche la page de profil
+U -> k : clique sur le bouton "Plan a Competition"
+k --> U : Affiche la section des Competitions
+alt il y a des compétitions à prévoir
+U -> k : sélectionner une Competition
+k--> U : Affiche les détails de la compétition
+alt l'administrateur approuve la competition
+U--> k : fixe une date et une heure
+U--> k : Clique sur le bouton "accept"
+U--> k : Clique sur le bouton "Confirm"
+
+
+k -> k : Vérifie les info
+k --> a : Envoie un message d'acceptation
+k -> k : Publie le défi
+else l'administrateur n'approuve pas la competition
+U--> k : Clique sur le bouton "refuse"
+U--> k : Clique sur le bouton "Confirm"
+k --> a : Envoie un message de refus
+end
+else il n'y a pas des compétitions à prévoir
+k--> U : Message d'absence des competitions existantes
+end
+@enduml

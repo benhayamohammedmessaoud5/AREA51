@@ -1,0 +1,83 @@
+@startuml
+actor Admin as d
+left to right direction
+package Admin{
+
+usecase "View Applications" as view
+usecase "Validate Application" as validate
+usecase "Assign Instructor" as assign
+usecase "Learning Path Management" as learning
+usecase "Challenge Management" as cg
+usecase "Schedule Management" as schedule
+usecase "Module Management" as md
+usecase "Set Reward" as set
+usecase "User Mangement" as um
+usecase "Developer" as dev
+usecase "Analyst" as analyst
+usecase "Instructor" as instruct
+usecase "Company Recruiter" as company
+usecase "Upload A Challenge" as up
+usecase "Use Question Bank" as qb
+usecase "View Question Bank" as vqb
+usecase "View List of Challenges" as viewChallenges
+usecase "Assign To Company" as assignCompany
+
+
+usecase "Delete" as delete
+usecase "Update" as u
+usecase "Create" as c
+ 
+usecase "Delete" as delete1
+usecase "Update" as u1
+usecase "Create" as c1
+
+usecase "Delete" as delete2
+usecase "Update" as u2
+usecase "Create" as c2
+
+usecase "Create" as c3
+usecase "Delete" as delete3
+
+
+}
+d-->learning
+d-->schedule
+d-->um
+d-->view
+d-->viewChallenges
+
+
+
+schedule <|-- c
+schedule <|-- u 
+schedule <|-- delete
+
+cg <|-- c1
+cg <|-- u1
+cg <|-- delete1
+
+learning <|-- md
+
+md <|-- c2
+md <|-- u2
+md <|-- delete2
+
+learning <|-- c3
+learning <|-- delete3
+
+
+c1 <|-- up 
+c1 <|-- qb
+
+um <|-- company
+um <|-- dev
+um <|-- analyst
+um <|-- instruct
+
+qb ..> vqb : <<includes>>
+viewChallenges <.. cg : <<extends>>
+view <.. validate : <<extends>>
+validate ..> assign : <<includes>>
+cg <|-- assignCompany
+cg <|-- set
+@enduml

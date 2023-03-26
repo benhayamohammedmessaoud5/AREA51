@@ -1,0 +1,52 @@
+@startuml
+title User Login
+
+actor User
+participant AREA51
+
+User -> AREA51: Clique sur Button Se Connecter
+AREA51 -> User: Afficher Page du Connexion
+alt Connexion avec Compte AREA51
+alt Essaie du Connexion < 5
+loop Les identifiants sont Correctes
+    User -> AREA51: Entre le nom d'utilisateur et le mot de passe
+    AREA51 -> AREA51: Vérifie les identifiants
+    AREA51 -> User: Envoie un code de confirmation
+User --> AREA51 : Saisit le code de confirmation
+    loop le code saisi est correct
+    
+break
+    
+    AREA51 --> User: Rediriger vers le tableau de bord
+end
+else code incorrecte
+    AREA51 --> User:  Message d'échec de la connexion
+end
+else Essaie du Connexion >= 5
+
+AREA51 --> User: Message d'échec de la connexion pour la cinquième fois
+
+end
+else Connexion avec Compte Gmail
+User -> AREA51: Cliquer Sur Icone du Platforme
+AREA51 --> User : Rediriger vers un onglet de Connexion 
+alt l'utilisateur choisit un compte enregistré
+User -> AREA51: Clique sur un Compte
+AREA51 -> AREA51 : Vérifier les Identifiants
+AREA51 --> AREA51 : Envoie les informations de l'utilisateur
+AREA51 -> AREA51: Vérifier les informations
+AREA51 --> User: Rediriger vers le tableau de bord
+else L'utilisateur clique sur Ajouter Compte
+User -> AREA51: Saisir les Identifiants
+AREA51 -> AREA51 : Vérifier les Identifiants
+
+AREA51 --> AREA51 : Envoie les informations de l'utilisateur
+AREA51 -> AREA51: Vérifier les informations
+AREA51 --> User: Rediriger vers le tableau de bord
+end
+end
+
+
+
+
+@enduml
