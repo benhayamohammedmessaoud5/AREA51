@@ -1,0 +1,16 @@
+
+ @import url('https://fonts.cdnfonts.com/css/mona-sans');
+ 
+    
+ body{
+  background: rgb(8,3,92);
+background: linear-gradient(90deg, rgba(8,3,92,1) 4%, rgba(96,5,168,1) 69%, rgba(0,212,255,1) 100%);
+font-family: 'Mona-Sans';
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/* Form container */
