@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
-import lottie from 'lottie-web';
 import './login.css';
+import  './ForgotPassword.js';
+import ForgotPassword from './ForgotPassword.js';
+import { Link } from 'react-router-dom';
+
+ 
+
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState('');
 
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
@@ -14,14 +20,13 @@ const Login = () => {
 
   const handleLoginFormSubmit = (event) => {
     event.preventDefault();
-    // TODO: Handle authentication logic
-    if (email === '') {
-      setErrorMessage('Please enter your email address.');
-    } else if (password === '') {
-      setErrorMessage('Please enter your password.');
-    } else {
-      setErrorMessage('');
+
+    // TODO: Replace this with your actual authentication logic
+    if (email === 'user@example.com' && password === 'password') {
       console.log(`Email: ${email}, Password: ${password}, Remember me: ${rememberMe}`);
+      // TODO: Handle successful login
+    } else {
+      setError('Invalid email or password');
     }
   };
 
@@ -29,6 +34,7 @@ const Login = () => {
     
     <div className="login-container">
       <h1>Login</h1>
+      {error && <div className="error-message">{error}</div>}
       <form onSubmit={handleLoginFormSubmit}>
         <label htmlFor="email">Email:</label>
         <input
@@ -58,14 +64,18 @@ const Login = () => {
           />
           <label htmlFor="remember-me">Remember me</label>
         </div>
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
         <button type="submit">Login</button>
       </form>
-      <a href="#">Forgot password?</a>
-      
+      <div className="forgot-password">
+        <a href="./ForgotPassword.js" target="_blank" rel="noopener noreferrer">Forgot Password ?</a>
+      </div>
+      <div className="create-account">
+        <span>Don't have an account?</span>
+        <a href="AccountForm.js"><br></br>Create one</a>
+      </div>
     </div>
-    
   );
 };
 
 export default Login;
+

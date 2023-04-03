@@ -1,0 +1,33 @@
+@import url('https://fonts.cdnfonts.com/css/mona-sans');
+nav {
+    float: right;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: -0.1rem;
+    font-family: 'Mona-Sans';
+  }
+  
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    margin-right: 20px;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Mona-Sans';
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    color: violet;
+  }
+  

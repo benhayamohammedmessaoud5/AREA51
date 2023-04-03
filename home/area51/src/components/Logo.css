@@ -1,0 +1,20 @@
+@import url('https://fonts.cdnfonts.com/css/mona-sans');
+.logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    font-family: 'Mona-Sans';
+  }
+  
